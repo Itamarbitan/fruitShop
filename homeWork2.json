@@ -1,0 +1,131 @@
+{
+  "uuid": "54f6f0d8-c5cb-42c6-bcf7-c52b942d370d",
+  "lastMigration": 19,
+  "name": "HomeWork2",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3004,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "99bee246-458e-4112-8e1f-f3247d623ba2",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "summerFruits",
+      "responses": [
+        {
+          "uuid": "66fe0187-d762-471a-bdd9-554ad51e649f",
+          "body": "{\n  \"banana\" : 5.99,\n  \"watermelon\" : 2.99,\n  \"peach\" : 7.99,\n  \"passionfruit\" : 9.99\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "47fe1e30-e3b3-4f15-8135-b4e62e7e0c8e",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "discount",
+      "responses": [
+        {
+          "uuid": "bab17090-e1ce-4d20-b6a6-15bf03853683",
+          "body": "{\n  \"message\" : \"we're sorry there are no discounts for this coupon\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "a2210235-5bd5-4fe0-8db8-a78be096ce34",
+          "body": "{\n  \"message\" : \"good for you , here's todays discounts\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "coupon",
+              "value": "banana",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "coupon",
+              "value": "passionfruit",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
